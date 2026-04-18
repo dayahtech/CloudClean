@@ -1,0 +1,71 @@
+<h2>BOOKING</h2>
+
+<div class="booking-container">
+    <form id="bookingForm" action="/submit-booking" method="POST">
+        <!-- Address Section -->
+        <div class="section">
+            <p><strong>Address:</strong></p>
+            <% if (!formattedAddress) { %>
+                <p style="color: red;">⚠️ Please complete your address in <a href="/profile" style="color: blue; text-decoration: underline;">your profile</a>.</p>
+            <% } else { %>
+                <input type="text" name="address" value="<%= formattedAddress %>" readonly>
+            <% } %>
+        </div>
+
+        <!-- Package Section -->
+        <div class="section">
+            <p><strong>Selected Package:</strong></p>
+            <div class="package-box"><%= selectedService.name %></div>
+            <input type="hidden" name="package" value="<%= selectedService.name %>">
+        </div>
+
+        <!-- Date & Time Slot -->
+        <div class="date-time-container">
+            <div class="date-container">
+                <input type="date" id="serviceDate" name="date" required>
+            </div>
+            <div class="time-slot-container">
+                <select name="timeSlot" id="timeSlot" required>
+                    <option value="">Select Time Slot</option>
+                    <% selectedService.timeSlots.forEach(slot => { %>
+                        <option value="<%= slot.time %>" 
+                                data-price="<%= slot.price %>"
+                                data-duration="<%= slot.duration %>"
+                                data-cleaners="<%= slot.cleaners %>">
+                            <%= slot.time %> - <%= slot.duration %>, <%= slot.cleaners %> cleaners
+                        </option>
+                    <% }) %>
+                </select>
+            </div>
+        </div>
+
+        <!-- Add-On Button -->
+        <button id="openAddon" type="button">ADD-ON</button>
+
+        <!-- Add-On Popup Modal -->
+        <div id="addonModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>ADD-ON</h2>
+                <div id="addonList"></div>
+                <p>Total Add-On: <span id="totalAddon">0</span></p>
+                <button id="addAddon">ADD</button>
+            </div>
+        </div>
+
+        <!-- Summary Box -->
+        <div id="summary">
+            <p>Session: <span id="sessionPrice">RM 0.00</span></p>
+            <p>Transportation: <span id="transportationFee">RM <%= transportationFee %></span></p>
+            <p>Total Payment: <span id="totalPrice">RM 0.00</span></p>
+        </div>
+
+        <!-- Payment Section -->
+        <div class="payment-container">
+            <h3>PAYMENT METHOD</h3>
+            <div id="paypal-button-container"></div>
+        </div>
+    </form>
+</div>
+
+<script src="/script.js"></script>

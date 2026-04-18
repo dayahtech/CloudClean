@@ -1,0 +1,99 @@
+<section class="services-page-content">
+    <h1 class="title-service-page">SELECT SERVICE</h1>
+
+    <!-- Swiper Wrapper -->
+    <div class="swiper services-swiper">
+        <div class="swiper-wrapper">
+            <% services.forEach(service => { %>
+                <div class="swiper-slide service-card" data-service-name="<%= service.name %>">
+                
+                <!-- Service Title + Navigation Buttons + Bottom Line -->
+                <div class="service-header">
+                    <h3 class="service-title"><%= service.name %></h3>
+                    <div class="swiper-buttons">
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+                </div>
+                <div class="bottom-line"></div>
+
+                <!-- Image Left, Features + Price Right -->
+                <div class="service-content">
+                    <div class="service-image-container">
+                        <img src="<%= service.image %>" alt="<%= service.name %>" class="service-image">
+                    </div>
+                    <div class="service-info">
+                        <ul class="feature-list">
+                            <% service.features.forEach(feature => { %>
+                                <li>🫧 <%= feature %></li>
+                            <% }) %>
+                        </ul>
+                        <p class="service-price"><strong>💰 Price:</strong> <%= service.price %></p>
+                    </div>
+                </div>
+
+                <!-- Book Now Button + Bottom Line -->
+                <div class="book-now-container">
+                    <button class="book-now">Book Now</button>
+                </div>
+                <div class="bottom-line"></div>
+
+                <!-- Review Section -->
+                <div class="reviews-container">
+                    <h4 class="review-title">Customer Reviews</h4>
+                    
+                    <!-- Display all reviews -->
+                    <div id="reviews-<%= service.name.replace(/\s+/g, '-') %>" class="reviews-list">
+                        <% if (reviewsByService[service.name] && reviewsByService[service.name].length > 0) { %>
+                            <% reviewsByService[service.name].forEach(review => { %>
+                                <div class="review">
+                                    <p><strong><%= review.name %></strong></p>
+                                    <p>Rating: <%= review.rating %> ⭐</p>
+                                    <p><%= review.comment %></p>
+                                    <% if (review.image) { %>
+                                        <img src="<%= review.image %>" alt="Review Image" style="max-width: 100px;">
+                                    <% } %>
+                                </div>
+                            <% }) %>
+                        <% } else { %>
+                            <p>No reviews yet. Be the first to leave one!</p>
+                        <% } %>
+                    </div>
+
+                    <!-- Show review form only if user has booked the service -->
+                    <% if (!user || Object.keys(user).length === 0) { %>
+                        <p>You need to <a href="/login">log in</a> to leave a review.</p>
+                    <% } else if (!hasBooked || !hasBooked[service.name]) { %>  
+                        <p>You must book this service before leaving a review.</p>
+                    <% } else if (hasReviewed || hasReviewed[service.name]) { %>
+                        <p>You have already reviewed this service.</p>
+                    <% } else { %>
+                        <form class="review-form" data-service="<%= service.name %>">
+                            <label>Rating:</label>
+                            <select name="rating">
+                                <option value="5">⭐⭐⭐⭐⭐</option>
+                                <option value="4">⭐⭐⭐⭐</option>
+                                <option value="3">⭐⭐⭐</option>
+                                <option value="2">⭐⭐</option>
+                                <option value="1">⭐</option>
+                            </select>
+
+                            <label>Comment:</label>
+                            <textarea name="comment" required></textarea>
+
+                            <label>Upload Image (optional):</label>
+                            <input type="file" name="reviewImage" accept="image/*">
+
+                            <button type="submit">Submit Review</button>
+                        </form>
+                    <% } %>
+                </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</section>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script src="/script.js"></script>

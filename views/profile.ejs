@@ -1,0 +1,47 @@
+<div class="profile-container">
+    <div class="profile-box">
+        <h2>Account</h2>
+        <p><strong>Email:</strong> <span id="email"><%= user.email %></span></p>
+        <p><strong>name:</strong> <span id="name"><%= user.name %></span></p>
+        <p><strong>Mobile No:</strong> <span id="phone"><%= user.phone %></span></p>
+        <br></br>
+        <h2>Addresses</h2>
+        <p><strong>Selected Area:</strong> <span id="area"><%= user.area %></span></p>
+        <p><strong>House No:</strong> <span id="house"><%= user.house %></span></p>
+        <p><strong>Postcode:</strong> <span id="postcode"><%= user.postcode %></span></p>
+        <p><strong>Address Line*:</strong> <span id="address"><%= user.address %></span></p>
+        <p><strong>City:</strong> <span id="city"><%= user.city %></span></p>
+
+        <!-- House Type Dropdown -->
+        <p><strong>House Type:</strong> 
+            <span id="houseTypeText"><%= user.houseType %></span>
+            <select id="houseTypeDropdown" style="display: none;">
+                <option value="Apartment" <%= user.houseType === 'Apartment' ? 'selected' : '' %>>Apartment</option>
+                <option value="Condominium" <%= user.houseType === 'Condominium' ? 'selected' : '' %>>Condominium</option>
+                <option value="Terrace Single" <%= user.houseType === 'Terrace Single' ? 'selected' : '' %>>Terrace Single</option>
+                <option value="Terrace Double" <%= user.houseType === 'Terrace Double' ? 'selected' : '' %>>Terrace Double</option>
+                <option value="Semi-D" <%= user.houseType === 'Semi-D' ? 'selected' : '' %>>Semi-D</option>
+                <option value="Bungalow" <%= user.houseType === 'Bungalow' ? 'selected' : '' %>>Bungalow</option>
+                <option value="Office Tower" <%= user.houseType === 'Office Tower' ? 'selected' : '' %>>Office Tower</option>
+                <option value="Office (Shop Lot)" <%= user.houseType === 'Office (Shop Lot)' ? 'selected' : '' %>>Office (Shop Lot)</option>
+                <option value="Office (Commercial Building)" <%= user.houseType === 'Office (Commercial Building)' ? 'selected' : '' %>>Office (Commercial Building)</option>
+            </select>
+        </p>
+
+        <!-- Property Size Dropdown -->
+        <p><strong>Size of Property:</strong> 
+            <span id="propertySizeText"><%= user.propertySize %></span>
+            <select id="propertySizeDropdown" style="display: none;">
+                <option value="Below 1000sf" <%= user.propertySize === 'Below 1000sf' ? 'selected' : '' %>>Below 1000sf</option>
+                <option value="1000-1500sf" <%= user.propertySize === '1000-1500sf' ? 'selected' : '' %>>1000-1500sf</option>
+                <option value="1500-2000sf" <%= user.propertySize === '1500-2000sf' ? 'selected' : '' %>>1500-2000sf</option>
+                <option value="2000-2500sf" <%= user.propertySize === '2000-2500sf' ? 'selected' : '' %>>2000-2500sf</option>
+                <option value="2500-3000sf" <%= user.propertySize === '2500-3000sf' ? 'selected' : '' %>>2500-3000sf</option>
+                <option value="3000sf above" <%= user.propertySize === '3000sf above' ? 'selected' : '' %>>3000sf above</option>
+            </select>
+        </p>
+
+        <button id="editBtn">Edit</button>
+        <button id="saveBtn" style="display: none;">Save</button>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#004aad">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" href="/images/logo.png">
+    <title><%= title || 'CloudClean' %></title>
+</head>
+<body class="<%= (title === 'Login' || title === 'Sign Up' || title === 'Forgot Password' || title === 'Reset Password' ) ? 'auth-page' : '' %>">
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="/images/logo.png" alt="CloudClean Logo">
+                <span>CloudClean</span>
+            </div>
+            <nav class="main-menu">
+                <ul class="menu">
+                    <li><a href="/" class="<%= title === 'Home' ? 'active' : '' %>">Home</a></li>
+                    <li><a href="/services" class="<%= title === 'Services' ? 'active' : '' %>">Services</a></li>
+                    <li><a href="/about" class="<%= title === 'About' ? 'active' : '' %>">About</a></li>
+                    <% if (user && (user.userId || user._id)) { %>
+                        <li class="dropdown <%= title === 'Profile' ? 'active' : '' %>">
+                            <a href="/profile" class="dropbtn">My Profile</a>
+                            <div class="dropdown-content">
+                                <a href="/profile" class="<%= title === 'Profile' ? 'active' : '' %>">Account</a>
+                                <a href="/booklist" class="<%= title === 'Book List' ? 'active' : '' %>">Book List</a>
+                                <button id="logoutBtn">Log Out</button>
+                            </div>
+                        </li>
+                    <% } else { %>
+                        <li><a href="/login" class="<%= title === 'Log In' ? 'active' : '' %>">Log In</a></li>
+                    <% } %>
+            </nav>            
+        </div>
+    </header>
+
+    <main>
+        
+        <%- body %>    
+
+    </main>
+
+    <footer>
+        <p class="footer-bottom">&copy; 2025 CloudClean</p>
+    </footer>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

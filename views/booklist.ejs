@@ -1,0 +1,25 @@
+<h2>Booking List</h2>
+<table border="1">
+    <thead>
+        <tr>
+            <th>Booking ID</th>
+            <th>Service Date</th>
+            <th>Time</th>
+            <th>Service</th>
+            <th>Price</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% bookings.forEach(booking => { %>
+            <tr>
+                <td><%= booking.bookingID %></td>
+                <td><%= booking.serviceDate %></td>
+                <td><%= booking.timeSlot %></td>
+                <td><%= booking.service %></td>
+                <td>RM <%= booking.price %></td>
+                <td><%= booking.paymentStatus %></td>
+            </tr>
+        <% }); %>
+    </tbody>
+</table>

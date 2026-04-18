@@ -1,0 +1,48 @@
+<div class="auth-container">
+    <div class="logo2">
+        <img src="/images/logo.png" alt="CloudClean Logo">
+        <span>CloudClean</span>
+    </div>
+
+    <h2>SIGN UP</h2>
+
+    <% if (errorMessage) { %>
+        <div id="error-message" style="color:red; text-align:center; margin-bottom:10px;">
+            <%= errorMessage %>
+        </div>
+    <% } %>
+
+    <form action="/auth/signup" method="POST" class="auth-box">
+        <input type="email" name="email" placeholder="Email" required>
+        <br>
+        <select name="area" required>
+            <option value="">Select an Area</option>
+            <option value="Sabak Bernam">Sabak Bernam</option>
+            <option value="Kuala Selangor">Kuala Selangor</option>
+            <option value="Hulu Selangor">Hulu Selangor</option>
+            <option value="Gombak">Gombak</option>
+            <option value="Petaling Jaya">Petaling Jaya</option>
+            <option value="Klang">Klang</option>
+            <option value="Kuala Langat">Kuala Langat</option>
+            <option value="Hulu Langat">Hulu Langat</option>
+            <option value="Sepang">Sepang</option>
+        </select>
+        <br>
+        <input type="text" name="name" id="name" placeholder="name" required>
+        <br>
+        <input type="password" name="password" id="password" placeholder="Password" required>
+        <br>
+        <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" required>
+        <br>
+        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required pattern="\+60\s\d{9,}">
+
+        <button class="auth-button">Sign Up</button>
+
+        <div class="error-message">
+        </div>
+
+        <a href="/login" class="back">Back to Login</a>
+    </form>
+</div>
+
+<script src="/js/script.js"></script>
