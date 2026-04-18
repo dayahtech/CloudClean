@@ -1,8 +1,31 @@
 # CloudClean
-A cleaning service website developed using the Agile methodology for assignment purposes. The frontend was built with HTML, CSS, JavaScript, and EJS. The backend was developed using Node.js, Express.js, RESTful API architecture, and MongoDB (local) for data management. In addition, the project added PayPal Sandbox API for user's payment.
 
-The website prototype and all multimedia content were created by Azlina Lee.
+CloudClean is a cleaning service web application developed for assignment purposes using Agile methodology. The system supports user authentication, service browsing, booking management, profile updates, reviews, and payment simulation in a structured service-booking workflow.
 
-The website does not have an official link, as the system uses a local MongoDB database and was not deployed online.
+## Features
+- User signup, login, and logout
+- JWT-based authentication with cookies
+- Forgot password and reset password flow
+- Service listing and checkout flow
+- Booking submission and booking list management
+- User profile viewing and updating
+- Review system with image upload
+- PayPal Sandbox payment integration
 
-CloudClean @ December 2024 - February 2025
+## Tech Stack
+- Frontend: HTML, CSS, JavaScript, EJS
+- Backend: Node.js, Express.js
+- Database: MongoDB (Local)
+- Architecture: Route-based backend with JSON-based endpoints
+- Methodology: Agile
+- Other Tools/Libraries: Mongoose, JWT, Multer, Nodemailer, PayPal Sandbox API
+
+## Contributions
+- System development: Independently developed
+- Prototype design and multimedia: Azlina Lee
+
+## Deployment
+This project was not deployed publicly because it uses a local MongoDB database.
+
+## Duration
+December 2024 – February 2025
